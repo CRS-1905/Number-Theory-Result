@@ -51,7 +51,9 @@ int legendra_symbol(int a,int p)
 		else
 			return power((p+1)/4);
 	}
-	r=power(((a1-1)/2)*((p-1)/2));
+	r=power((a1-1)/2);
+	if(r==-1)
+		r=power((p-1)/2);
 	return r*legendra_symbol(p,a1);
 }
 
@@ -70,6 +72,5 @@ int main()
 		if(d==p-1)
 			d=-1;
 	}
-	printf("%d\n",gcd(a,p));
 	printf("The Legendre Symbol (%d,%d) =%d\n",a,p,d);
 }
