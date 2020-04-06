@@ -8,17 +8,15 @@ int power(int i)
 		return -1;
 }
 
-int mod(int i,int j,int p)
+int legendra_symbol(int a,int p)
 {
-	int product=1,k;
-	for(k=1;k<=j;k++)
-		product=(product*i)%p;
-	return product;
-}
-
-int legendra_symbol(int a1,int p)
-{
-	int s,i;
+	int s,i,a1,r;
+	if(a<0)
+	{
+		while(a<0)
+			a=a+p;
+	}
+	a1=a%p;
 	if(a1==1)
 		return 1;
 	if(a1==p-1)
@@ -41,7 +39,10 @@ int legendra_symbol(int a1,int p)
 		}
 	}
 	if(s==1)
-		return mod(a1,(p-1)/2,p);
+	{
+		r=power(((a1-1)/2)*((p-1)/2));
+		return r*legendra_symbol(p,a1);
+	}
 }
 
 int main()
@@ -51,8 +52,7 @@ int main()
 	scanf("%d",&p);
 	printf("Enter An Integer :\t");
 	scanf("%d",&a);
-	a1=a%p;
-	d=legendra_symbol(a1,p);
+	d=legendra_symbol(a,p);
 	if(d==p-1)
 		d=-1;
 	printf("The Legendre Symbol (%d,%d) =%d\n",a,p,d);
