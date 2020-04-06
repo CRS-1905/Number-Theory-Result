@@ -17,6 +17,8 @@ int legendra_symbol(int a,int p)
 			a=a+p;
 	}
 	a1=a%p;
+	if(a1==0)
+		return 0;
 	if(a1==1)
 		return 1;
 	if(a1==p-1)
