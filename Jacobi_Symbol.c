@@ -54,10 +54,16 @@ int Jacobi_Symbol(int a,int n)
 			i++;
 			a1=a1/2;
 		}
-		r1=power(i*(n*n - 1)/8);
+		if(i%2==0)
+			r1=1;
+		else
+			r1=power((n*n - 1)/8);
+
 		return r1*Jacobi_Symbol(a1,n);	
 	}
-	r=power(((a1-1)/2)*((n-1)/2));
+	r=power((a1-1)/2);
+	if(r==-1)
+		r=power((n-1)/2);
 	return r*Jacobi_Symbol(n,a1);
 }
 
